@@ -71,9 +71,8 @@ export function WhyVaultbyChase() {
           >
             {/* Placeholder for a Lottie animation or dynamic dashboard graphic */}
             <Image
-              src="https://placehold.co/500x350.png"
+              src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749602191/dash_t6p9fc.png"
               alt="VaultbyChase modern dashboard interface showing charts and insights"
-              data-ai-hint="modern dashboard ui graph darkmode"
               width={500}
               height={350}
               className="rounded-lg shadow-2xl object-contain hover:scale-105 transition-transform duration-500 ease-in-out"
