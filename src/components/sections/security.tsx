@@ -36,7 +36,7 @@ const securityFeaturesList = [
 
 export function Security() {
   const { ref: sectionRef, isInView: sectionInView } = useInViewAnimation({ triggerOnce: true, threshold: 0.1 });
-  const { ref: titleRef, isInView: titleInView } = useInViewAnimation({ triggerOnce: true, threshold: 0.4 }); // Adjusted threshold for earlier trigger
+  const { ref: titleRef, isInView: titleInView } = useInViewAnimation({ triggerOnce: true, threshold: 0.4 });
   const { ref: imageRef, isInView: imageInView } = useInViewAnimation({ triggerOnce: true, threshold: 0.2, rootMargin: "-50px 0px" });
   const { ref: featuresRef, isInView: featuresInView } = useInViewAnimation({ triggerOnce: true, threshold: 0.1 });
 
@@ -46,8 +46,8 @@ export function Security() {
       ref={sectionRef}
       className={cn(
         "py-20 md:py-28 overflow-hidden",
-        "bg-background text-foreground", // Light mode default
-        "dark:bg-background dark:text-primary-foreground" // Dark mode section background (using theme's dark background)
+        "bg-background text-foreground",
+        "dark:bg-background dark:text-primary-foreground"
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -59,17 +59,17 @@ export function Security() {
           )}
         >
           <h2 className={cn(
-            "text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl",
-            "text-primary", // Light mode title
-            "dark:text-primary-foreground" // Dark mode title
+            "text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl", // Reduced font size
+            "text-primary",
+            "dark:text-primary-foreground" // Ensure white in dark mode
             )}
           >
             Your Security, Our Utmost Priority
           </h2>
           <p className={cn(
-            "mt-5 text-lg max-w-3xl mx-auto",
-            "text-foreground/80", // Light mode description
-            "dark:text-primary-foreground/80" // Dark mode description
+            "mt-4 text-base max-w-3xl mx-auto", // Reduced font size, mt-4 for spacing
+            "text-foreground/80",
+            "dark:text-primary-foreground" // Ensure white in dark mode (was primary-foreground/80)
           )}>
             At VaultbyChase, we employ state-of-the-art security measures to protect your
             information and transactions. Bank with confidence knowing your financial well-
@@ -83,7 +83,7 @@ export function Security() {
             ref={imageRef}
             className={cn(
               "relative h-80 md:h-[450px] rounded-2xl overflow-hidden shadow-xl opacity-0 transform -translate-x-12 transition-all duration-1000 ease-out",
-              "bg-muted dark:bg-secondary/20", // Placeholder background for the image container
+              "bg-muted dark:bg-secondary/20",
               imageInView && "opacity-100 translate-x-0 delay-200"
             )}
           >
@@ -95,14 +95,13 @@ export function Security() {
               objectFit="cover"
               className="transform hover:scale-105 transition-transform duration-500 ease-in-out"
             />
-            {/* Subtle overlay to blend image if needed */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 dark:from-primary/10 dark:to-secondary/10 opacity-30"></div>
           </div>
 
           {/* Features Column */}
           <ul
             ref={featuresRef}
-            className="space-y-5 md:space-y-6"
+            className="space-y-4 md:space-y-5" // Reduced spacing between items slightly
           >
             {securityFeaturesList.map((feature, index) => {
               const IconComponent = feature.icon;
@@ -110,33 +109,33 @@ export function Security() {
                 <li
                   key={index}
                   className={cn(
-                    "flex items-start p-5 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out opacity-0 transform translate-y-8",
-                    "bg-card dark:bg-secondary", // Card: light=card_bg, dark=secondary_color (e.g. #1c4778)
-                    "border border-transparent hover:border-primary/30 dark:hover:border-primary-foreground/20", // Primary is light blue in dark mode
-                    "hover:-translate-y-1.5", // Slightly more lift
+                    "flex items-start p-4 md:p-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out opacity-0 transform translate-y-8", // Reduced padding
+                    "bg-card dark:bg-secondary",
+                    "border border-transparent hover:border-primary/30 dark:hover:border-primary-foreground/20",
+                    "hover:-translate-y-1", // Slightly less lift
                     featuresInView && `opacity-100 translate-y-0 delay-${150 + index * 150}`
                   )}
                 >
                   <div className={cn(
-                    "p-3 rounded-lg mr-4 md:mr-5 flex-shrink-0",
-                    "bg-primary/10 dark:bg-primary-foreground/10" // Icon background: Light primary/10, Dark primary-fg/10
+                    "p-2.5 rounded-lg mr-3 md:mr-4 flex-shrink-0", // Reduced padding & margin
+                    "bg-primary/10 dark:bg-primary-foreground/10"
                   )}>
                      <IconComponent className={cn(
-                       "h-6 w-6 md:h-7 md:w-7",
-                       "text-primary dark:text-primary" // Icon color: Light primary, Dark primary (primary in dark is light blue)
+                       "h-5 w-5 md:h-6 md:w-6", // Reduced icon size
+                       "text-primary dark:text-primary"
                        )} />
                   </div>
                   <div>
                     <h3 className={cn(
-                      "font-semibold text-lg md:text-xl mb-1",
-                      "text-secondary dark:text-secondary-foreground" // Title: Light secondary, Dark secondary-fg (white)
+                      "font-semibold text-base md:text-lg mb-0.5", // Reduced font size and margin
+                      "text-secondary dark:text-secondary-foreground"
                       )}
                     >
                       {feature.title}
                     </h3>
                     <p className={cn(
-                      "text-sm md:text-base leading-relaxed",
-                      "text-muted-foreground dark:text-secondary-foreground/70" // Description: Light muted-fg, Dark secondary-fg/70
+                      "text-xs md:text-sm leading-relaxed", // Reduced font size
+                      "text-muted-foreground dark:text-secondary-foreground/70"
                       )}
                     >
                       {feature.description}
