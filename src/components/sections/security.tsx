@@ -47,7 +47,7 @@ export function Security() {
       className={cn(
         "py-20 md:py-28 overflow-hidden",
         "bg-background text-foreground",
-        "dark:bg-background dark:text-primary-foreground"
+        "dark:bg-background" // Main section background for dark mode
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -59,17 +59,17 @@ export function Security() {
           )}
         >
           <h2 className={cn(
-            "text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl", // Reduced font size
+            "text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl",
             "text-primary",
-            "dark:text-primary-foreground" // Ensure white in dark mode
+            "dark:text-primary-foreground" // White text in dark mode
             )}
           >
             Your Security, Our Utmost Priority
           </h2>
           <p className={cn(
-            "mt-4 text-base max-w-3xl mx-auto", // Reduced font size, mt-4 for spacing
+            "mt-4 text-sm max-w-3xl mx-auto md:text-base", // Reduced font size
             "text-foreground/80",
-            "dark:text-primary-foreground" // Ensure white in dark mode (was primary-foreground/80)
+            "dark:text-primary-foreground/90" // White text (slightly less opacity) in dark mode
           )}>
             At VaultbyChase, we employ state-of-the-art security measures to protect your
             information and transactions. Bank with confidence knowing your financial well-
@@ -83,7 +83,7 @@ export function Security() {
             ref={imageRef}
             className={cn(
               "relative h-80 md:h-[450px] rounded-2xl overflow-hidden shadow-xl opacity-0 transform -translate-x-12 transition-all duration-1000 ease-out",
-              "bg-muted dark:bg-secondary/20",
+              "bg-muted dark:bg-secondary/20", // Image container background
               imageInView && "opacity-100 translate-x-0 delay-200"
             )}
           >
@@ -101,7 +101,7 @@ export function Security() {
           {/* Features Column */}
           <ul
             ref={featuresRef}
-            className="space-y-4 md:space-y-5" // Reduced spacing between items slightly
+            className="space-y-3 md:space-y-4" // Reduced spacing
           >
             {securityFeaturesList.map((feature, index) => {
               const IconComponent = feature.icon;
@@ -109,33 +109,33 @@ export function Security() {
                 <li
                   key={index}
                   className={cn(
-                    "flex items-start p-4 md:p-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out opacity-0 transform translate-y-8", // Reduced padding
-                    "bg-card dark:bg-secondary",
+                    "flex items-start p-3 md:p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out opacity-0 transform translate-y-8", // Reduced padding
+                    "bg-card dark:bg-secondary", // Card background
                     "border border-transparent hover:border-primary/30 dark:hover:border-primary-foreground/20",
-                    "hover:-translate-y-1", // Slightly less lift
+                    "hover:-translate-y-1",
                     featuresInView && `opacity-100 translate-y-0 delay-${150 + index * 150}`
                   )}
                 >
                   <div className={cn(
-                    "p-2.5 rounded-lg mr-3 md:mr-4 flex-shrink-0", // Reduced padding & margin
-                    "bg-primary/10 dark:bg-primary-foreground/10"
+                    "p-2 rounded-lg mr-3 md:mr-4 flex-shrink-0", // Reduced padding & margin
+                    "bg-primary/10 dark:bg-primary-foreground/10" // Icon container background
                   )}>
                      <IconComponent className={cn(
-                       "h-5 w-5 md:h-6 md:w-6", // Reduced icon size
-                       "text-primary dark:text-primary"
+                       "h-4 w-4 md:h-5 md:w-5", // Reduced icon size
+                       "text-primary dark:text-primary-foreground" // Icon color: themed in light, white in dark
                        )} />
                   </div>
                   <div>
                     <h3 className={cn(
-                      "font-semibold text-base md:text-lg mb-0.5", // Reduced font size and margin
-                      "text-secondary dark:text-secondary-foreground"
+                      "font-semibold text-sm md:text-base mb-0.5", // Reduced font size
+                      "text-secondary dark:text-secondary-foreground" // Title color: themed in light, white in dark
                       )}
                     >
                       {feature.title}
                     </h3>
                     <p className={cn(
                       "text-xs md:text-sm leading-relaxed", // Reduced font size
-                      "text-muted-foreground dark:text-secondary-foreground/70"
+                      "text-muted-foreground dark:text-secondary-foreground/80" // Description color: themed in light, white (less opacity) in dark
                       )}
                     >
                       {feature.description}
