@@ -48,11 +48,11 @@ export function Header() {
     setIsMenuOpen(false);
     if (!isPageLink && href.startsWith('/#')) {
       e.preventDefault();
-      const targetId = href.substring(2); // Adjusted to handle /#home correctly
+      const targetId = href.substring(2); 
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: 'smooth' });
-      } else if (href === '/#home' || href === '/') { // Ensure root path also scrolls to top
+      } else if (href === '/#home' || href === '/') { 
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
@@ -71,7 +71,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" aria-label="VaultbyChase Home" onClick={(e) => handleNavLinkClick(e, '/#home', false)}>
-          <Logo className="h-9 w-auto" />
+          <Logo height={36} priority />
         </Link>
 
         <nav className="hidden items-center space-x-6 md:flex">

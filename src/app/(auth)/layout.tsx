@@ -10,7 +10,7 @@ export default function AuthLayout({
     <div className="flex min-h-screen flex-col items-center justify-center bg-muted p-4">
       <div className="mb-8">
         <Link href="/" aria-label="VaultbyChase Home">
-          <Logo className="h-12 w-auto" />
+          <Logo height={48} priority />
         </Link>
       </div>
       <div className="w-full max-w-md rounded-lg bg-background p-6 shadow-xl sm:p-8">

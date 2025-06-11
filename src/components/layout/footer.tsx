@@ -10,11 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link href="/" aria-label="VaultbyChase Home">
-               <svg width="180" height="40" viewBox="0 0 180 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="VaultbyChase Logo">
-                <text x="0" y="28" fontFamily="var(--font-geist-sans), Arial, sans-serif" fontSize="28" fontWeight="bold" fill="hsl(var(--secondary-foreground))">
-                  VaultbyChase
-                </text>
-              </svg>
+               <Logo height={40} />
             </Link>
             <p className="mt-5 text-sm text-muted-foreground opacity-80 max-w-md">
               Empowering your financial future with intelligent, secure, and accessible banking solutions. Experience the future of finance, today.
