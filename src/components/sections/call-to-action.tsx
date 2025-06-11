@@ -24,7 +24,7 @@ export function DownloadAppCTA() {
         @keyframes pulse_slow_cta { 0%, 100% { opacity: 0.3; transform: scale(0.9) rotate(0deg); } 50% { opacity: 0.6; transform: scale(1.1) rotate(10deg); } }
         @keyframes pulse_slower_cta { 0%, 100% { opacity: 0.2; transform: scale(1) rotate(0deg); } 50% { opacity: 0.4; transform: scale(0.85) rotate(-10deg); } }
         .animate-pulse_slow_cta { animation: pulse_slow_cta 15s infinite ease-in-out; }
-        .animate-pulse_slower_cta { animation: pulse_slower_cta 18s infinite ease-in-out; }
+        .animate_pulse_slower_cta { animation: pulse_slower_cta 18s infinite ease-in-out; } /* Corrected class name */
         .animation-delay-3000_cta { animation-delay: -3s; }
       `}</style>
       <div
@@ -55,10 +55,10 @@ export function DownloadAppCTA() {
 
         <div className="flex justify-center items-center space-x-6 mb-16">
           <Link href="#" aria-label="Download on the App Store">
-            <Image src="https://placehold.co/180x60.png" alt="App Store badge" width={180} height={60} data-ai-hint="app store badge white" className="rounded-lg hover:opacity-90 hover:scale-105 transform transition-all duration-300"/>
+            <Image src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749602189/App_Store_c47thz.png" alt="App Store badge" width={180} height={60} className="rounded-lg hover:opacity-90 hover:scale-105 transform transition-all duration-300"/>
           </Link>
           <Link href="#" aria-label="Get it on Google Play">
-            <Image src="https://placehold.co/180x60.png" alt="Google Play badge" width={180} height={60} data-ai-hint="google play badge white" className="rounded-lg hover:opacity-90 hover:scale-105 transform transition-all duration-300"/>
+            <Image src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749602189/Google_Play_o4ehxz.png" alt="Google Play badge" width={180} height={60} className="rounded-lg hover:opacity-90 hover:scale-105 transform transition-all duration-300"/>
           </Link>
         </div>
         

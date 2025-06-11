@@ -13,7 +13,6 @@ interface FeatureItem {
   description: string;
   mockupSrc: string;
   mockupAlt: string;
-  aiHint: string;
 }
 
 const keyFeaturesList: FeatureItem[] = [
@@ -21,33 +20,29 @@ const keyFeaturesList: FeatureItem[] = [
     icon: ArrowRightLeft,
     title: 'Instant Transfers',
     description: 'Seamlessly send and receive money with Zelle® and internal transfers, lightning fast.',
-    mockupSrc: 'https://placehold.co/180x360.png', // Adjusted size
+    mockupSrc: 'https://res.cloudinary.com/dse63uv5p/image/upload/v1749602193/transfer_mwpzuk.png', 
     mockupAlt: 'VaultbyChase app transfer screen',
-    aiHint: 'app transfer screen modern',
   },
   {
     icon: CheckCircle,
     title: 'Mobile Deposits',
     description: 'Deposit checks anytime, anywhere using your smartphone camera with ease.',
-    mockupSrc: 'https://placehold.co/180x360.png', // Adjusted size
+    mockupSrc: 'https://res.cloudinary.com/dse63uv5p/image/upload/v1749682909/check_xv21op.png', 
     mockupAlt: 'VaultbyChase app check deposit flow',
-    aiHint: 'phone check deposit ui',
   },
   {
     icon: BarChart2,
     title: 'Smart Insights',
     description: 'Understand spending and reach goals with personalized AI-driven analytics.',
-    mockupSrc: 'https://placehold.co/180x360.png', // Adjusted size
+    mockupSrc: 'https://res.cloudinary.com/dse63uv5p/image/upload/v1749602190/smart_awpmgy.png', 
     mockupAlt: 'VaultbyChase app budget/analytics screen',
-    aiHint: 'phone budget analytics dark',
   },
   {
     icon: ShieldCheck,
     title: 'Fortress Security',
     description: 'Multi-layered security, biometric access, and 24/7 fraud monitoring for your peace of mind.',
-    mockupSrc: 'https://placehold.co/180x360.png', // Adjusted size
+    mockupSrc: 'https://res.cloudinary.com/dse63uv5p/image/upload/v1749602194/sec_kar3vk.png', 
     mockupAlt: 'VaultbyChase app security feature',
-    aiHint: 'phone security login modern',
   },
 ];
 
@@ -73,7 +68,6 @@ const FeatureCard = ({ feature, index }: { feature: FeatureItem; index: number }
             width={150} // Adjusted for smaller mockup inside card
             height={300} // Adjusted
             className="rounded-2xl shadow-xl group-hover:scale-105 transition-transform duration-300 z-0"
-            data-ai-hint={feature.aiHint}
           />
         </div>
         <CardHeader className="pb-3 pt-6">
