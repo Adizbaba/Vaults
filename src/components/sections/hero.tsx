@@ -69,10 +69,10 @@ export function Hero() {
             </div>
             <div className="mt-8 flex justify-center lg:justify-start space-x-4 opacity-80">
               <Link href="#" aria-label="Download on the App Store">
-                <Image src="https://placehold.co/135x40.png" alt="App Store" width={135} height={40} data-ai-hint="app store badge dark" className="rounded-md hover:opacity-100 transition-opacity filter grayscale-[50%] hover:grayscale-0"/>
+                <Image src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749602189/App_Store_c47thz.png" alt="App Store" width={135} height={40} className="rounded-md hover:opacity-100 transition-opacity filter grayscale-[50%] hover:grayscale-0"/>
               </Link>
               <Link href="#" aria-label="Get it on Google Play">
-                <Image src="https://placehold.co/135x40.png" alt="Google Play" width={135} height={40} data-ai-hint="google play badge dark" className="rounded-md hover:opacity-100 transition-opacity filter grayscale-[50%] hover:grayscale-0"/>
+                <Image src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749602189/Google_Play_o4ehxz.png" alt="Google Play" width={135} height={40} className="rounded-md hover:opacity-100 transition-opacity filter grayscale-[50%] hover:grayscale-0"/>
               </Link>
             </div>
           </div>
