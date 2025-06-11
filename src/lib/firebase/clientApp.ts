@@ -5,13 +5,13 @@ import { getStorage, FirebaseStorage } from "firebase/storage"; // Added Firebas
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDdRR8yU_DjpnhNK5kyKUOK-4SB1DH-mQs",
-  authDomain: "weighty-elf-461314-q0.firebaseapp.com",
-  projectId: "weighty-elf-461314-q0",
-  storageBucket: "weighty-elf-461314-q0.appspot.com", // Corrected from .firebasestorage.app to .appspot.com as per standard
-  messagingSenderId: "846417326897",
-  appId: "1:846417326897:web:25fc8cc1a6a3e4404d7610",
-  measurementId: "G-R8V5XWGQHN"
+  apiKey: "AIzaSyAFVkmyYZm-xDuI0McM7MGbXSfw76fBrko",
+  authDomain: "vaultbychase.firebaseapp.com",
+  projectId: "vaultbychase",
+  storageBucket: "vaultbychase.firebasestorage.app",
+  messagingSenderId: "430503191055",
+  appId: "1:430503191055:web:663966a7b3c71dc738797a",
+  measurementId: "G-138PW9EKND"
 };
 
 let app: FirebaseApp;
