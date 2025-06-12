@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Logo } from "../icons/logo";
+import { Logo } from "../icons/logo"; // Updated to import Logo
 import {
   Sidebar,
   SidebarContent,
@@ -86,8 +86,10 @@ export function DashboardSidebarNav() {
     <Sidebar collapsible="icon" side="left" variant="sidebar">
         <SidebarHeader className="p-4 border-b border-sidebar-border">
           <Link href="/dashboard" className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
-            {/* Simple logo for sidebar */}
-             <svg className="h-8 w-8 text-primary group-data-[collapsible=icon]:h-6 group-data-[collapsible=icon]:w-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 4.53L19.19 9L12 13.47L4.81 9L12 4.53ZM4 10.36L11 14.36V19.19L4 15.19V10.36ZM13 14.36L20 10.36V15.19L13 19.19V14.36Z"/></svg>
+            <Logo 
+              height={28} // Base height for next/image aspect ratio and quality
+              className="h-7 group-data-[collapsible=icon]:h-5 w-auto transition-all duration-300" // CSS for display size
+            />
             <span className="font-semibold text-lg text-primary group-data-[collapsible=icon]:hidden">VaultbyChase</span>
           </Link>
         </SidebarHeader>
