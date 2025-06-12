@@ -90,7 +90,6 @@ export function DashboardSidebarNav() {
               height={28} // Base height for next/image aspect ratio and quality
               className="h-7 group-data-[collapsible=icon]:h-5 w-auto transition-all duration-300" // CSS for display size
             />
-            <span className="font-semibold text-lg text-primary group-data-[collapsible=icon]:hidden">VaultbyChase</span>
           </Link>
         </SidebarHeader>
         <SidebarContent className="p-2">
@@ -110,3 +109,4 @@ export function DashboardSidebarNav() {
       </Sidebar>
   );
 }
+
