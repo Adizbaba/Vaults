@@ -59,7 +59,7 @@ export function Security() {
           )}
         >
           <h2 className={cn(
-            "text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl",
+            "text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl", // Updated heading font size
             "text-primary",
             "dark:text-primary-foreground" // White text in dark mode
             )}
@@ -67,7 +67,7 @@ export function Security() {
             Your Security, Our Utmost Priority
           </h2>
           <p className={cn(
-            "mt-4 text-sm max-w-3xl mx-auto md:text-base", // Reduced font size
+            "mt-4 text-lg max-w-3xl mx-auto md:text-xl", // Updated description font size
             "text-foreground/80",
             "dark:text-primary-foreground/90" // White text (slightly less opacity) in dark mode
           )}>
@@ -88,9 +88,8 @@ export function Security() {
             )}
           >
             <Image
-              src="https://placehold.co/600x450.png"
+              src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749687632/security1_x3hygt.png"
               alt="Abstract cybersecurity visual representing data protection and network security"
-              data-ai-hint="abstract security network digital"
               layout="fill"
               objectFit="cover"
               className="transform hover:scale-105 transition-transform duration-500 ease-in-out"
@@ -127,14 +126,14 @@ export function Security() {
                   </div>
                   <div>
                     <h3 className={cn(
-                      "font-semibold text-sm md:text-base mb-0.5", // Reduced font size
+                      "font-semibold text-base md:text-lg mb-0.5", // Updated feature title font size
                       "text-secondary dark:text-secondary-foreground" // Title color: themed in light, white in dark
                       )}
                     >
                       {feature.title}
                     </h3>
                     <p className={cn(
-                      "text-xs md:text-sm leading-relaxed", // Reduced font size
+                      "text-sm md:text-base leading-relaxed", // Updated feature description font size
                       "text-muted-foreground dark:text-secondary-foreground/80" // Description color: themed in light, white (less opacity) in dark
                       )}
                     >
