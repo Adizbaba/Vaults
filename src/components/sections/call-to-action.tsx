@@ -70,12 +70,11 @@ export function DownloadAppCTA() {
           )}
         >
           <Image 
-            src="https://placehold.co/320x600.png" 
+            src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749691318/download_ste3hk.png" 
             alt="VaultbyChase App interface on a smartphone" 
             width={320} 
             height={600} 
             className="rounded-t-[2.5rem] shadow-2xl z-10 border-4 border-black/30"
-            data-ai-hint="phone app interface finance dark"
           />
            {/* Placeholder for Lottie Animation: Could be a subtle animation of money or data flowing into the phone. */}
            {/* <div className="absolute -bottom-5 -left-5 w-24 h-24">
