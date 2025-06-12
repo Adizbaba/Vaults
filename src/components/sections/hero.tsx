@@ -4,14 +4,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useInViewAnimation } from '@/hooks/useInViewAnimation';
 import { cn } from '@/lib/utils';
 
 export function Hero() {
   const { ref: textContentRef, isInView: textContentInView } = useInViewAnimation({ triggerOnce: true, threshold: 0.2 });
   const { ref: imageContainerRef, isInView: imageContainerInView } = useInViewAnimation({ triggerOnce: true, threshold: 0.3, rootMargin: "-100px 0px" });
-  const { ref: lottieRef, isInView: lottieInView } = useInViewAnimation({ triggerOnce: true, threshold: 0.5 });
 
   return (
     <section id="home" className="relative bg-gradient-to-br from-muted via-background to-primary/5 py-24 md:py-32 lg:py-40 overflow-hidden">
@@ -40,11 +39,11 @@ export function Hero() {
       `}</style>
 
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-5 gap-12 items-center">
           <div
             ref={textContentRef}
             className={cn(
-              "text-center lg:text-left opacity-0 transform translate-y-10 transition-all duration-1000 ease-out",
+              "text-center lg:text-left opacity-0 transform translate-y-10 transition-all duration-1000 ease-out lg:col-span-2",
               textContentInView && "opacity-100 translate-y-0"
             )}
           >
@@ -79,50 +78,19 @@ export function Hero() {
           <div
             ref={imageContainerRef}
             className={cn(
-              "relative flex justify-center items-center mt-12 lg:mt-0 opacity-0 transform scale-90 transition-all duration-1000 ease-out",
+              "relative flex justify-center items-center mt-12 lg:mt-0 opacity-0 transform scale-90 transition-all duration-1000 ease-out lg:col-span-3",
               imageContainerInView && "opacity-100 scale-100 delay-200"
             )}
           >
             <div className="relative">
-              {/* Consider replacing with a 3D device mockup or a more abstract representation */}
-              <Image 
-                src="https://placehold.co/320x640.png" 
-                alt="VaultbyChase app on a modern smartphone"
-                width={320} 
-                height={640} 
+              <Image
+                src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749689624/hero_xzgmvb.png"
+                alt="VaultbyChase platform overview"
+                width={1200}
+                height={800}
                 priority
-                className="rounded-[2.5rem] shadow-2xl z-10 transform transition-transform duration-500 hover:scale-105 border-4 border-foreground/5"
-                data-ai-hint="modern banking app phone glowing"
+                className="rounded-xl shadow-2xl z-10 transform transition-transform duration-500 hover:scale-105 border-4 border-foreground/5 w-full h-auto"
               />
-              {/* Placeholder for Lottie Animation: Could be a subtle background animation behind the phone or an interactive element */}
-              {/* To use, install react-lottie-player: npm install react-lottie-player */}
-              <div
-                ref={lottieRef} 
-                className={cn(
-                  "absolute -bottom-10 -right-10 w-48 h-48 opacity-0 transform scale-75 transition-all duration-700 ease-out",
-                  lottieInView && "opacity-100 scale-100 delay-500"
-                  )}
-                >
-                <Image 
-                  src="https://placehold.co/200x200.png" 
-                  alt="Abstract financial technology animation" 
-                  width={200} 
-                  height={200}
-                  className="filter " 
-                  data-ai-hint="lottie animation abstract tech data"
-                />
-                {/* Example Lottie Player:
-                <Lottie
-                  animationData={yourLottieJson} // require('./path-to-lottie.json')
-                  play
-                  loop
-                  style={{ width: '100%', height: '100%' }}
-                />
-                */}
-              </div>
-               <div className="absolute -top-8 -left-12 bg-background p-3 rounded-xl shadow-xl z-20 transform transition-all duration-500 hover:scale-110">
-                 <ShieldCheck className="w-10 h-10 text-primary"/>
-               </div>
             </div>
           </div>
         </div>
