@@ -39,11 +39,11 @@ export function Hero() {
       `}</style>
 
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div
             ref={textContentRef}
             className={cn(
-              "text-center lg:text-left opacity-0 transform translate-y-10 transition-all duration-1000 ease-out lg:col-span-2",
+              "text-center lg:text-left opacity-0 transform translate-y-10 transition-all duration-1000 ease-out lg:col-span-1",
               textContentInView && "opacity-100 translate-y-0"
             )}
           >
@@ -78,7 +78,7 @@ export function Hero() {
           <div
             ref={imageContainerRef}
             className={cn(
-              "relative flex justify-center items-center mt-12 lg:mt-0 opacity-0 transform scale-90 transition-all duration-1000 ease-out lg:col-span-3",
+              "relative flex justify-center items-center mt-12 lg:mt-0 opacity-0 transform scale-90 transition-all duration-1000 ease-out lg:col-span-1",
               imageContainerInView && "opacity-100 scale-100 delay-200"
             )}
           >
