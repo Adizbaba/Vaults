@@ -5,7 +5,7 @@ import { getStorage, FirebaseStorage } from "firebase/storage"; // Added Firebas
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDRh7y1qD6rX0BfS9nL4wZ2cV5a8tJ1gK",
+  apiKey: "AIzaSyCe57Gl6hatlkjpV1N4GESoLjeTgGJBl_A",
   authDomain: "vaultbychase.firebaseapp.com",
   projectId: "vaultbychase",
   storageBucket: "vaultbychase.appspot.com",
