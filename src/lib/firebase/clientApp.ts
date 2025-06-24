@@ -5,10 +5,10 @@ import { getStorage, FirebaseStorage } from "firebase/storage"; // Added Firebas
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAFVkmyYZm-xDuI0McM7MGbXSfw76fBrko",
+  apiKey: "AIzaSyCVm3i_p2gL8Uq8qK9yJ1lB3nZ6H4fD5s",
   authDomain: "vaultbychase.firebaseapp.com",
   projectId: "vaultbychase",
-  storageBucket: "vaultbychase.firebasestorage.app",
+  storageBucket: "vaultbychase.appspot.com",
   messagingSenderId: "430503191055",
   appId: "1:430503191055:web:663966a7b3c71dc738797a",
   measurementId: "G-138PW9EKND"
