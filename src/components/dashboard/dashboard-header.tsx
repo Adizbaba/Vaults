@@ -116,7 +116,7 @@ export function DashboardHeader({ pageTitle }: { pageTitle?: string }) {
             <Button variant="ghost" className="relative h-10 w-10 rounded-full" disabled={isLoggingOut}>
               <Avatar className="h-10 w-10">
                 <AvatarImage 
-                  src={userAvatarUrl || "https://res.cloudinary.com/dse63uv5p/image/upload/v1749602191/dash_t6p9fc.png"} 
+                  src={userAvatarUrl || "https://res.cloudinary.com/dse63uv5p/image/upload/v1749602192/profile_clp8za.png"} 
                   alt={userDisplayName}
                   key={userAvatarUrl || "default-avatar"} 
                 />

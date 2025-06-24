@@ -175,7 +175,7 @@ export default function ProfilePage() {
           <div className="relative">
             <Avatar className="h-32 w-32 border-4 border-primary shadow-md">
               <AvatarImage 
-                src={avatarPreview || "https://res.cloudinary.com/dse63uv5p/image/upload/v1749602191/dash_t6p9fc.png"} 
+                src={avatarPreview || "https://res.cloudinary.com/dse63uv5p/image/upload/v1749602192/profile_clp8za.png"} 
                 alt={user.fullName}
                 key={avatarPreview || "default-avatar"} 
               />
