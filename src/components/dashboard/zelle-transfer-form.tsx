@@ -134,7 +134,12 @@ export function ZelleTransferForm() {
         recipientSearchForm.reset();
         setFoundRecipient(null);
       } else {
-        toast({ title: `Zelle® ${confirmationData.type === 'send' ? 'Payment Failed' : 'Request Failed'}`, description: result.error, variant: "destructive" });
+        const actionType = confirmationData.type === 'send' ? 'Transfer' : 'Request';
+        toast({ 
+            title: `${actionType} Unsuccessful`,
+            description: result.error || `Your Zelle® ${actionType.toLowerCase()} could not be completed at this time. Please try again later.`,
+            variant: "destructive" 
+        });
       }
     } catch (error) {
        toast({ title: "Error", description: "An unexpected error occurred.", variant: "destructive" });

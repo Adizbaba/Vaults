@@ -72,8 +72,8 @@ export function ExternalTransferForm() {
         form.reset();
       } else {
         toast({
-          title: "ACH Transfer Failed",
-          description: result.error || "Could not initiate the transfer. Please try again.",
+          title: "Transfer Unsuccessful",
+          description: result.error || "Your transfer could not be completed at this time. Please try again later.",
           variant: "destructive",
         });
       }

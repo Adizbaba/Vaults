@@ -76,20 +76,33 @@ export function FundsTransferForm() {
     if (!confirmationData) return;
     setIsSubmitting(true);
 
-    // Simulate API call
+    // Simulate API call and failure condition
     await new Promise(resolve => setTimeout(resolve, 1500));
-
-    console.log("Transfer data confirmed:", confirmationData);
-    toast({
-      title: "Transfer Successful",
-      description: `$${confirmationData.amount.toFixed(2)} transferred from ${displayedUserAccounts.find(acc => acc.id === confirmationData.fromAccount)?.name} to ${displayedUserAccounts.find(acc => acc.id === confirmationData.toAccount)?.name}.`,
-      variant: "default", 
-    });
+    const fromAccount = displayedUserAccounts.find(acc => acc.id === confirmationData.fromAccount);
     
-    setIsSubmitting(false);
-    setIsConfirming(false);
-    setConfirmationData(null);
-    form.reset();
+    try {
+        if (!fromAccount || confirmationData.amount > fromAccount.balance) {
+            throw new Error("Insufficient funds for this transfer.");
+        }
+
+        // Simulate success
+        console.log("Transfer data confirmed:", confirmationData);
+        toast({
+          title: "Transfer Successful",
+          description: `$${confirmationData.amount.toFixed(2)} transferred from ${fromAccount.name} to ${displayedUserAccounts.find(acc => acc.id === confirmationData.toAccount)?.name}.`,
+        });
+        form.reset();
+    } catch (error: any) {
+        toast({
+            title: "Transfer Unsuccessful",
+            description: error.message || "Your transfer could not be completed at this time. Please try again later.",
+            variant: "destructive",
+        });
+    } finally {
+        setIsSubmitting(false);
+        setIsConfirming(false);
+        setConfirmationData(null);
+    }
   };
 
   const fromAccountName = confirmationData ? displayedUserAccounts.find(acc => acc.id === confirmationData.fromAccount)?.name : 'N/A';
