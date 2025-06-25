@@ -80,7 +80,7 @@ export function Header() {
               key={item.label}
               href={item.href}
               onClick={(e) => handleNavLinkClick(e, item.href, item.isPageLink)}
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+              className="text-sm font-semibold text-foreground hover:text-primary transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               {item.label}
             </Link>
@@ -114,7 +114,7 @@ export function Header() {
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavLinkClick(e, item.href, item.isPageLink)}
-                className="block py-3 px-3 text-foreground hover:text-primary transition-colors text-center rounded-md hover:bg-muted text-base"
+                className="block py-3 px-3 text-foreground hover:text-primary transition-colors text-center rounded-md hover:bg-muted text-base font-semibold"
               >
                 {item.label}
               </Link>
