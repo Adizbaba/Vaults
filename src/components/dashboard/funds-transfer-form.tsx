@@ -76,13 +76,18 @@ export function FundsTransferForm() {
     if (!confirmationData) return;
     setIsSubmitting(true);
 
-    // Simulate API call and failure condition
+    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     const fromAccount = displayedUserAccounts.find(acc => acc.id === confirmationData.fromAccount);
     
     try {
         if (!fromAccount || confirmationData.amount > fromAccount.balance) {
             throw new Error("Insufficient funds for this transfer.");
+        }
+
+        // Simulate a specific backend rule for easy testing of the failure case
+        if (confirmationData.amount >= 50000) {
+            throw new Error("Internal transfers over $50,000.00 require a manual review. Please contact support.");
         }
 
         // Simulate success
@@ -92,6 +97,7 @@ export function FundsTransferForm() {
           description: `$${confirmationData.amount.toFixed(2)} transferred from ${fromAccount.name} to ${displayedUserAccounts.find(acc => acc.id === confirmationData.toAccount)?.name}.`,
         });
         form.reset();
+        setConfirmationData(null); // Clear data on success
     } catch (error: any) {
         toast({
             title: "Transfer Unsuccessful",
@@ -101,7 +107,7 @@ export function FundsTransferForm() {
     } finally {
         setIsSubmitting(false);
         setIsConfirming(false);
-        setConfirmationData(null);
+        // Data is only cleared on success now, so user can retry on failure
     }
   };
 
