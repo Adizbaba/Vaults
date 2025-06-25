@@ -179,18 +179,18 @@ export default function DashboardOverviewPage() {
       </div>
 
       {isAlertVisible && (
-        <Alert variant="destructive" className="relative animate-subtle-pulse">
+        <Alert className="relative animate-subtle-pulse border bg-red-100 border-red-300 text-red-700 dark:bg-red-400/20 dark:border-red-500/40 dark:text-red-300">
           <Button
             variant="ghost"
             size="icon"
-            className="absolute top-2 right-2 h-6 w-6"
+            className="absolute top-2 right-2 h-6 w-6 text-red-800 hover:bg-red-200/50 hover:text-red-800 dark:text-red-200 dark:hover:bg-red-400/30"
             onClick={() => setIsAlertVisible(false)}
             aria-label="Dismiss notice"
           >
             <X className="h-4 w-4" />
           </Button>
-          <AlertTriangle className="h-5 w-5" />
-          <AlertTitle className="font-bold text-lg">Account Notice</AlertTitle>
+          <AlertTriangle className="h-5 w-5 text-current" />
+          <AlertTitle className="font-bold text-lg">⚠️ Account Notice</AlertTitle>
           <AlertDescription>
             Due to multiple transaction errors, certain features on your account have been temporarily restricted to protect your security. Please visit your nearest VaultbyChase branch to resolve this issue.
           </AlertDescription>
