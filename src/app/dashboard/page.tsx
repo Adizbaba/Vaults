@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from 'react';
@@ -190,7 +189,7 @@ export default function DashboardOverviewPage() {
             <X className="h-4 w-4" />
           </Button>
           <AlertTriangle className="h-5 w-5 text-current" />
-          <AlertTitle className="font-bold text-lg">⚠️ Account Notice</AlertTitle>
+          <AlertTitle className="font-bold text-lg">Account Notice</AlertTitle>
           <AlertDescription>
             Due to multiple transaction errors, certain features on your account have been temporarily restricted to protect your security. Please visit your nearest VaultbyChase branch to resolve this issue.
           </AlertDescription>
