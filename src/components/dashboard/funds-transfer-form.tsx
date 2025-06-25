@@ -78,36 +78,21 @@ export function FundsTransferForm() {
 
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
-    const fromAccount = displayedUserAccounts.find(acc => acc.id === confirmationData.fromAccount);
     
     try {
-        if (!fromAccount || confirmationData.amount > fromAccount.balance) {
-            throw new Error("Insufficient funds for this transfer.");
-        }
+        // Always throw an error to simulate failure, as requested for testing.
+        throw new Error("Your transfer could not be completed at this time. Please try again later.");
 
-        // Simulate a specific backend rule for easy testing of the failure case
-        if (confirmationData.amount >= 50000) {
-            throw new Error("Internal transfers over $50,000.00 require a manual review. Please contact support.");
-        }
-
-        // Simulate success
-        console.log("Transfer data confirmed:", confirmationData);
-        toast({
-          title: "Transfer Successful",
-          description: `$${confirmationData.amount.toFixed(2)} transferred from ${fromAccount.name} to ${displayedUserAccounts.find(acc => acc.id === confirmationData.toAccount)?.name}.`,
-        });
-        form.reset();
-        setConfirmationData(null); // Clear data on success
     } catch (error: any) {
         toast({
             title: "Transfer Unsuccessful",
-            description: error.message || "Your transfer could not be completed at this time. Please try again later.",
+            description: error.message,
             variant: "destructive",
         });
     } finally {
         setIsSubmitting(false);
         setIsConfirming(false);
-        // Data is only cleared on success now, so user can retry on failure
+        // On failure, data is kept in the modal so user can retry or edit.
     }
   };
 
