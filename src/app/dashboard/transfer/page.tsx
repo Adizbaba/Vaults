@@ -34,10 +34,9 @@ export default function TransferPage() {
             <X className="h-4 w-4" />
           </Button>
           <AlertTriangle className="h-5 w-5 text-current" />
-          <AlertTitle className="font-bold text-lg">⚠️ Account Notice</AlertTitle>
+          <AlertTitle className="font-bold text-lg">Account Notice</AlertTitle>
           <AlertDescription>
-            Due to multiple transaction errors, certain features on your account have been temporarily restricted to protect your security. Please visit your nearest VaultbyChase branch to resolve this issue.
-          </AlertDescription>
+          Due to multiple errors detected during recent money transfer attempts, your ability to initiate new transfers has been temporarily restricted as a security precaution. Please visit your nearest VaultbyChase branch to resolve this issue and restore full access to your account.          </AlertDescription>
         </Alert>
       )}
 
