@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import { AccountSummaryCard } from "@/components/dashboard/account-summary-card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { DollarSign, CreditCard as CreditCardIconLucide, Briefcase, TrendingUp, ArrowRightLeft, Send, FileText, Settings, Loader2 } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertTriangle, X, DollarSign, CreditCard as CreditCardIconLucide, Briefcase, TrendingUp, ArrowRightLeft, Send, FileText, Settings, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { TransactionHistory } from "@/components/dashboard/transaction-history";
 import { auth } from '@/lib/firebase/clientApp';
@@ -124,6 +125,7 @@ export default function DashboardOverviewPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAccount, setSelectedAccount] = useState<AccountDetail | null>(null);
   const [displayedAccounts, setDisplayedAccounts] = useState<AccountDetail[]>(initialMockAccounts);
+  const [isAlertVisible, setIsAlertVisible] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
@@ -175,6 +177,25 @@ export default function DashboardOverviewPage() {
         <h2 className="text-2xl font-semibold text-foreground mb-1">Welcome Back, {userName || "User"}!</h2>
         <p className="text-muted-foreground">Here&apos;s a quick overview of your finances.</p>
       </div>
+
+      {isAlertVisible && (
+        <Alert variant="destructive" className="relative animate-subtle-pulse">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-2 right-2 h-6 w-6"
+            onClick={() => setIsAlertVisible(false)}
+            aria-label="Dismiss notice"
+          >
+            <X className="h-4 w-4" />
+          </Button>
+          <AlertTriangle className="h-5 w-5" />
+          <AlertTitle className="font-bold text-lg">Account Notice</AlertTitle>
+          <AlertDescription>
+            Due to multiple transaction errors, certain features on your account have been temporarily restricted to protect your security. Please visit your nearest VaultbyChase branch to resolve this issue.
+          </AlertDescription>
+        </Alert>
+      )}
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {displayedAccounts.map(acc => (
