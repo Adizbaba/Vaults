@@ -73,8 +73,8 @@ export function WhyVaultbyChase() {
             <Image
               src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749602191/dash_t6p9fc.png"
               alt="VaultbyChase dashboard on a smartphone"
-              width={250}
-              height={500}
+              width={550}
+              height={800}
               className="rounded-lg shadow-2xl object-contain hover:scale-105 transition-transform duration-500 ease-in-out"
             />
              {/* To use Lottie: npm install react-lottie-player. Then:
