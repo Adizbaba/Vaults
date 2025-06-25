@@ -71,8 +71,8 @@ export function WhyVaultbyChase() {
           >
             {/* Placeholder for a Lottie animation or dynamic dashboard graphic */}
             <Image
-              src="https://res.cloudinary.com/dse63uv5p/image/upload/v1750884140/steptodown.com790820_frpmac.jpg"
-              alt="VaultbyChase app interface on a smartphone"
+              src="https://res.cloudinary.com/dse63uv5p/image/upload/v1749602191/dash_t6p9fc.png"
+              alt="VaultbyChase dashboard on a smartphone"
               width={250}
               height={500}
               className="rounded-lg shadow-2xl object-contain hover:scale-105 transition-transform duration-500 ease-in-out"

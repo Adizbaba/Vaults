@@ -67,12 +67,11 @@ export default function CareersPage() {
         
         <section id="culture-image" className="mb-16">
             <Image
-                src="https://placehold.co/1200x500.png"
-                alt="Diverse team working collaboratively in a modern office environment"
+                src="https://res.cloudinary.com/dse63uv5p/image/upload/v1750884140/steptodown.com790820_frpmac.jpg"
+                alt="A professional working on a laptop, representing a career at VaultbyChase"
                 width={1200}
                 height={500}
                 className="rounded-lg shadow-xl object-cover w-full"
-                data-ai-hint="diverse team office"
             />
         </section>
 
