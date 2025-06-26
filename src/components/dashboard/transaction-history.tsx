@@ -15,7 +15,7 @@ import type { Transaction } from "@/types/accounts"; // Using the more detailed 
 
 // Default mock transactions if none are passed (can be removed if always provided)
 const defaultMockTransactions: Transaction[] = [
-  { id: "txn1", accountId: "defaultAcc", date: "2024-07-28", description: "Grocery Store Purchase", amount: -75.50, type: "debit", status: "completed" },
+  { id: "txn1", accountId: "defaultAcc", date: "2027-06-10", description: "Grocery Store Purchase", amount: -75.50, type: "debit", status: "completed" },
   { id: "txn2", accountId: "defaultAcc", date: "2024-07-27", description: "Salary Deposit", amount: 2500.00, type: "credit", status: "completed" },
   { id: "txn3", accountId: "defaultAcc", date: "2024-07-26", description: "Online Subscription", amount: -12.99, type: "debit", status: "completed" },
   { id: "txn4", accountId: "defaultAcc", date: "2024-07-25", description: "Transfer to Savings", amount: -500.00, type: "transfer_out", status: "completed" },
