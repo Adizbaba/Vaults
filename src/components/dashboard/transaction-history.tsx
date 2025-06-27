@@ -15,13 +15,13 @@ import type { Transaction } from "@/types/accounts"; // Using the more detailed 
 
 // Default mock transactions if none are passed (can be removed if always provided)
 const defaultMockTransactions: Transaction[] = [
-  { id: "txn1", accountId: "defaultAcc", date: "2027-06-10", description: "Grocery Store Purchase", amount: -75.50, type: "debit", status: "completed" },
-  { id: "txn2", accountId: "defaultAcc", date: "2024-07-27", description: "Salary Deposit", amount: 2500.00, type: "credit", status: "completed" },
-  { id: "txn3", accountId: "defaultAcc", date: "2024-07-26", description: "Online Subscription", amount: -12.99, type: "debit", status: "completed" },
-  { id: "txn4", accountId: "defaultAcc", date: "2024-07-25", description: "Transfer to Savings", amount: -500.00, type: "transfer_out", status: "completed" },
-  { id: "txn5", accountId: "defaultAcc", date: "2024-07-24", description: "Restaurant Bill", amount: -45.00, type: "debit", status: "pending" },
-  { id: "txn6", accountId: "defaultAcc", date: "2024-07-23", description: "ATM Withdrawal", amount: -100.00, type: "debit", status: "completed" },
-  { id: "txn7", accountId: "defaultAcc", date: "2024-07-22", description: "Refund from Amazon", amount: 30.25, type: "credit", status: "completed" },
+  { id: "txn1", accountId: "defaultAcc", date: "2025-06-10", description: "Online Purchase", amount: -75.50, type: "debit", status: "completed" },
+  { id: "txn2", accountId: "defaultAcc", date: "2025-06-07", description: "Direct Deposit", amount: 6530.00, type: "credit", status: "completed" },
+  { id: "txn3", accountId: "defaultAcc", date: "2025-05-26", description: "Online Subscription", amount: -12.99, type: "debit", status: "completed" },
+  { id: "txn4", accountId: "defaultAcc", date: "2025-05-15", description: "Transfer to Savings", amount: -500.00, type: "transfer_out", status: "completed" },
+  { id: "txn5", accountId: "defaultAcc", date: "2025-05-14", description: "Restaurant Bill", amount: -45.00, type: "debit", status: "completed" },
+  { id: "txn6", accountId: "defaultAcc", date: "2025-05-10", description: "Cash App Transfer", amount: -100.00, type: "debit", status: "completed" },
+  { id: "txn7", accountId: "defaultAcc", date: "2025-04-22", description: "Refund from Amazon", amount: 30.25, type: "credit", status: "completed" },
 ];
 
 interface TransactionHistoryProps {
