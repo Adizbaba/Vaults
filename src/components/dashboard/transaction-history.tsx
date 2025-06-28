@@ -132,57 +132,88 @@ export function TransactionHistory({
         )}
       </CardHeader>
       <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Date</TableHead>
-              <TableHead>Description</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead>Status</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredTransactions.length > 0 ? (
-              filteredTransactions.map((txn) => (
-                <TableRow key={txn.id}>
-                  <TableCell>{format(new Date(txn.date), 'MM/dd/yyyy')}</TableCell>
-                  <TableCell className="font-medium">{txn.description}</TableCell>
-                  <TableCell className={`text-right ${txn.amount >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                    {txn.amount >= 0 ? <ArrowUp className="inline h-4 w-4 mr-1" /> : <ArrowDown className="inline h-4 w-4 mr-1" /> }
-                    ${Math.abs(txn.amount).toFixed(2)}
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant={getBadgeVariant(txn.type)} className="capitalize">
-                      {txn.type.replace(/_/g, ' ')}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Badge 
-                      variant={
-                        txn.status === 'completed' ? 'outline' : 
-                        txn.status === 'pending' ? 'default' : 
-                        'destructive'
-                      } 
-                      className="capitalize border-current"
-                    >
-                      {txn.status}
-                    </Badge>
+        {/* Desktop Table View */}
+        <div className="hidden md:block">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Date</TableHead>
+                <TableHead>Description</TableHead>
+                <TableHead className="text-right">Amount</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead>Status</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredTransactions.length > 0 ? (
+                filteredTransactions.map((txn) => (
+                  <TableRow key={txn.id}>
+                    <TableCell>{format(new Date(txn.date), 'MM/dd/yyyy')}</TableCell>
+                    <TableCell className="font-medium">{txn.description}</TableCell>
+                    <TableCell className={`text-right ${txn.amount >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      {txn.amount >= 0 ? <ArrowUp className="inline h-4 w-4 mr-1" /> : <ArrowDown className="inline h-4 w-4 mr-1" /> }
+                      ${Math.abs(txn.amount).toFixed(2)}
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant={getBadgeVariant(txn.type)} className="capitalize">
+                        {txn.type.replace(/_/g, ' ')}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge 
+                        variant={
+                          txn.status === 'completed' ? 'outline' : 
+                          txn.status === 'pending' ? 'default' : 
+                          'destructive'
+                        } 
+                        className="capitalize border-current"
+                      >
+                        {txn.status}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
+                    No transactions found.
                   </TableCell>
                 </TableRow>
-              ))
+              )}
+            </TableBody>
+          </Table>
+        </div>
+
+        {/* Mobile Card List View */}
+        <div className="md:hidden space-y-3">
+            {filteredTransactions.length > 0 ? (
+                filteredTransactions.map((txn) => (
+                    <div key={txn.id} className="p-4 border rounded-lg flex justify-between items-center bg-background hover:bg-muted/50 transition-colors">
+                        <div>
+                            <p className="font-semibold text-foreground">{txn.description}</p>
+                            <p className="text-sm text-muted-foreground">{format(new Date(txn.date), 'MMM dd, yyyy')}</p>
+                            <Badge variant={getBadgeVariant(txn.type)} className="capitalize mt-1">
+                                {txn.type.replace(/_/g, ' ')}
+                            </Badge>
+                        </div>
+                        <div className="text-right flex-shrink-0 ml-4">
+                            <p className={`font-bold text-lg ${txn.amount >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                {txn.amount >= 0 ? '+' : '-'}${Math.abs(txn.amount).toFixed(2)}
+                            </p>
+                            <p className={`text-xs font-medium ${ txn.status === 'completed' ? 'text-muted-foreground' : 'text-amber-600'}`}>
+                                {txn.status}
+                            </p>
+                        </div>
+                    </div>
+                ))
             ) : (
-              <TableRow>
-                <TableCell colSpan={5} className="text-center text-muted-foreground py-8">
-                  No transactions found.
-                </TableCell>
-              </TableRow>
+                <p className="text-center text-muted-foreground py-8">No transactions found.</p>
             )}
-          </TableBody>
-        </Table>
+        </div>
+
         {/* Show "View All" if there are more transactions than displayed (and not on the main transactions page) */}
         {defaultItemsToShow && transactions.length > defaultItemsToShow && (
-            <div className="mt-4 text-center">
+            <div className="mt-6 text-center">
                 <Button variant="link" asChild>
                     <Link href={viewAllLink}>View All Transactions</Link>
                 </Button>
