@@ -1,89 +1,89 @@
+
 "use client";
 
-import { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation'; // Corrected import
+import { useEffect, useCallback, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
+import { auth } from '@/lib/firebase/clientApp';
+import { signOut } from 'firebase/auth';
+import { Button } from '@/components/ui/button';
 
-const INACTIVITY_TIMEOUT = 15 * 60 * 1000; // 15 minutes
-const WARNING_TIMEOUT = 14 * 60 * 1000; // 14 minutes (1 minute before timeout)
+const INACTIVITY_TIMEOUT = 10 * 60 * 1000; // 10 minutes
+const WARNING_TIMEOUT = 9 * 60 * 1000; // 9 minutes (1 minute before timeout)
 
 export function useSessionTimeout() {
   const router = useRouter();
   const { toast, dismiss } = useToast();
-  const [isActive, setIsActive] = useState(true);
-  let activityTimer: NodeJS.Timeout | null = null;
-  let warningTimer: NodeJS.Timeout | null = null;
-  let toastIdRef = '';
+  const activityTimer = useRef<NodeJS.Timeout | null>(null);
+  const warningTimer = useRef<NodeJS.Timeout | null>(null);
+  const toastId = useRef<string | null>(null);
 
-
-  const handleLogout = useCallback(() => {
-    // Implement actual logout logic (e.g., clear tokens, call API)
-    console.log("Session timed out. Logging out...");
-    dismiss(toastIdRef); // Dismiss any active warning toast
-    router.push('/login?sessionExpired=true');
-  }, [router, dismiss, toastIdRef]);
+  const handleLogout = useCallback(async () => {
+    if (toastId.current) {
+      dismiss(toastId.current);
+    }
+    try {
+      await signOut(auth);
+      // The toast on the login page is sufficient, no need for two.
+    } catch (error) {
+        console.error("Error signing out:", error);
+    } finally {
+        router.push('/login?sessionExpired=true');
+    }
+  }, [router, dismiss]);
 
   const resetTimers = useCallback(() => {
-    if (activityTimer) clearTimeout(activityTimer);
-    if (warningTimer) clearTimeout(warningTimer);
-    dismiss(toastIdRef);
+    if (activityTimer.current) clearTimeout(activityTimer.current);
+    if (warningTimer.current) clearTimeout(warningTimer.current);
+    if (toastId.current) {
+        dismiss(toastId.current);
+        toastId.current = null;
+    }
 
-    activityTimer = setTimeout(handleLogout, INACTIVITY_TIMEOUT);
+    activityTimer.current = setTimeout(handleLogout, INACTIVITY_TIMEOUT);
     
-    warningTimer = setTimeout(() => {
+    warningTimer.current = setTimeout(() => {
       const { id } = toast({
         title: "Session Expiry Warning",
-        description: `You will be logged out due to inactivity in ${((INACTIVITY_TIMEOUT - WARNING_TIMEOUT) / 1000 / 60).toFixed(0)} minute(s). Click to stay logged in.`,
+        description: `You will be logged out due to inactivity in 1 minute.`,
         variant: "destructive",
-        duration: INACTIVITY_TIMEOUT - WARNING_TIMEOUT + 5000, // Keep toast slightly longer than remaining time
+        duration: INACTIVITY_TIMEOUT - WARNING_TIMEOUT,
         action: (
           <Button variant="outline" size="sm" onClick={() => {
             resetTimers();
-            dismiss(id);
           }}>
             Stay Logged In
           </Button>
         ),
       });
-      if(id) toastIdRef = id;
+      if(id) toastId.current = id;
     }, WARNING_TIMEOUT);
 
-    setIsActive(true);
-  }, [handleLogout, toast, dismiss, INACTIVITY_TIMEOUT, WARNING_TIMEOUT]);
+  }, [handleLogout, toast, dismiss]);
 
   useEffect(() => {
-    const events = ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart'];
+    const events: (keyof WindowEventMap)[] = ['mousemove', 'mousedown', 'keydown', 'touchstart'];
 
     const handleActivity = () => {
       resetTimers();
     };
 
+    // Only run on the client
     if (typeof window !== 'undefined') {
-      events.forEach(event => window.addEventListener(event, handleActivity));
-      resetTimers(); // Initialize timers on mount
+        events.forEach(event => window.addEventListener(event, handleActivity));
+        resetTimers(); // Initialize timers on mount
     }
 
     return () => {
-      if (activityTimer) clearTimeout(activityTimer);
-      if (warningTimer) clearTimeout(warningTimer);
-      events.forEach(event => window.removeEventListener(event, handleActivity));
-      dismiss(toastIdRef);
+      if (activityTimer.current) clearTimeout(activityTimer.current);
+      if (warningTimer.current) clearTimeout(warningTimer.current);
+      if (typeof window !== 'undefined') {
+        events.forEach(event => window.removeEventListener(event, handleActivity));
+      }
+       if (toastId.current) {
+        dismiss(toastId.current);
+      }
     };
-  }, [resetTimers, dismiss, toastIdRef]);
+  }, [resetTimers, dismiss]);
 
-  return isActive;
 }
-
-// How to use this hook in your DashboardLayout or a global context provider:
-//
-// import { useSessionTimeout } from '@/hooks/use-session-timeout';
-//
-// export default function DashboardLayout({ children }) {
-//   useSessionTimeout(); // Call the hook
-//   return (
-//     // ... your layout JSX
-//   );
-// }
-//
-// Note: This hook is client-side only. It should be used in components marked with "use client".
-// Ensure the user is actually logged in before activating this hook (e.g. by checking auth status).

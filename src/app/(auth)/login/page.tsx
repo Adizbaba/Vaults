@@ -10,10 +10,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { auth } from '@/lib/firebase/clientApp'; // Import Firebase auth instance
 import { signInWithEmailAndPassword, onAuthStateChanged, User } from 'firebase/auth';
-import { Loader2 } from 'lucide-react';
+import { Loader2, AlertCircle } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
@@ -24,9 +25,11 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [checkingAuthState, setCheckingAuthState] = useState(true);
+  const [sessionExpired, setSessionExpired] = useState(false);
 
 
   const form = useForm<LoginFormValues>({
@@ -36,6 +39,12 @@ export default function LoginPage() {
       password: "",
     },
   });
+
+  useEffect(() => {
+    if (searchParams.get('sessionExpired') === 'true') {
+      setSessionExpired(true);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
@@ -94,6 +103,17 @@ export default function LoginPage() {
         <CardTitle className="text-2xl font-bold text-primary">Welcome Back</CardTitle>
         <CardDescription>Enter your credentials to access your VaultbyChase account.</CardDescription>
       </CardHeader>
+
+      {sessionExpired && (
+        <Alert variant="destructive" className="mb-4">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>Session Expired</AlertTitle>
+          <AlertDescription>
+            You have been logged out due to inactivity. Please log in again.
+          </AlertDescription>
+        </Alert>
+      )}
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardContent className="space-y-4">

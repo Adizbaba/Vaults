@@ -1,12 +1,19 @@
+
+"use client"; // Make it a client component to use hooks
+
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { DashboardSidebarNav } from "@/components/dashboard/dashboard-sidebar-nav";
-import { SidebarProvider } from "@/components/ui/sidebar"; // Using the existing complex sidebar
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { useSessionTimeout } from '@/hooks/use-session-timeout'; // Import the hook
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Activate the session timeout hook for all dashboard pages
+  useSessionTimeout();
+
   return (
     <SidebarProvider defaultOpen={true}>
       <DashboardSidebarNav />
