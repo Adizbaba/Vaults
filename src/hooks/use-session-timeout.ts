@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { auth } from '@/lib/firebase/clientApp';
@@ -48,12 +48,16 @@ export function useSessionTimeout() {
         description: `You will be logged out due to inactivity in 1 minute.`,
         variant: "destructive",
         duration: INACTIVITY_TIMEOUT - WARNING_TIMEOUT,
-        action: (
-          <Button variant="outline" size="sm" onClick={() => {
-            resetTimers();
-          }}>
-            Stay Logged In
-          </Button>
+        action: React.createElement(
+          Button,
+          {
+            variant: "outline",
+            size: "sm",
+            onClick: () => {
+              resetTimers();
+            },
+          },
+          "Stay Logged In"
         ),
       });
       if(id) toastId.current = id;
@@ -85,5 +89,4 @@ export function useSessionTimeout() {
       }
     };
   }, [resetTimers, dismiss]);
-
 }
