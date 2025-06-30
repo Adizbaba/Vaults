@@ -11,15 +11,15 @@ import {
   CalendarCheck,
   CreditCard,
   Landmark,
-  MessageSquare,
   Settings,
   PieChart,
   FileText,
-  History // Added History icon
+  History,
+  LifeBuoy // Changed to LifeBuoy for better context
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Logo } from "../icons/logo"; // Updated to import Logo
+import { Logo } from "../icons/logo";
 import {
   Sidebar,
   SidebarContent,
@@ -28,7 +28,7 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarFooter,
-} from "@/components/ui/sidebar"; // Using the existing complex sidebar
+} from "@/components/ui/sidebar";
 
 interface NavItem {
   href: string;
@@ -47,10 +47,10 @@ const mainNavItems: NavItem[] = [
 ];
 
 const secondaryNavItems: NavItem[] = [
-  { href: "/dashboard/transactions", label: "Transaction History", icon: History }, // Added Transaction History
+  { href: "/dashboard/transactions", label: "Transaction History", icon: History },
   { href: "/dashboard/reports", label: "Reports", icon: PieChart },
   { href: "/dashboard/statements", label: "Statements", icon: FileText },
-  { href: "/support", label: "Support", icon: MessageSquare },
+  { href: "/dashboard/support", label: "Support", icon: LifeBuoy }, // Updated href and icon
   { href: "/dashboard/settings", label: "Settings", icon: Settings },
 ];
 
@@ -87,8 +87,8 @@ export function DashboardSidebarNav() {
         <SidebarHeader className="p-4 border-b border-sidebar-border">
           <Link href="/dashboard" className="flex items-center gap-2 group-data-[collapsible=icon]:justify-center">
             <Logo 
-              height={28} // Base height for next/image aspect ratio and quality
-              className="h-7 group-data-[collapsible=icon]:h-5 w-auto transition-all duration-300" // CSS for display size
+              height={28} 
+              className="h-7 group-data-[collapsible=icon]:h-5 w-auto transition-all duration-300" 
             />
           </Link>
         </SidebarHeader>
@@ -103,10 +103,6 @@ export function DashboardSidebarNav() {
             </SidebarMenu>
           </ScrollArea>
         </SidebarContent>
-        {/* <SidebarFooter className="p-2 border-t border-sidebar-border">
-          User profile / logout can go here if not in header
-        </SidebarFooter> */}
       </Sidebar>
   );
 }
-
